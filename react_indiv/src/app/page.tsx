@@ -27,8 +27,10 @@ export default function Home() {
   const[user, updateUsers] = useState<User[]>(USERS_INIT);
   let i  = 2;
 
-  function addUser() {
-
+  const addUser: FormEventHandler<HTMLInputElement> = (event) => {
+    event.preventDefault();
+    console.log(event.currentUser);
+    //updateUsers();
   }
 
   return (

@@ -1,5 +1,5 @@
 "use client";
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, FormEventHandler, useState } from 'react';
 import Card from './Card'; 
 import Button from './Button';
 import styles from './Signup.module.css'; 
@@ -15,22 +15,32 @@ type User = {
 };
 
 interface SignUpProps {
-  onSubmit: (newbie: User) => void;
-
+  onSubmit: FormEventHandler<HTMLFormElement>;
 }
 
 export default function Signup({onSubmit}: SignUpProps) {
-  
+    let newUser: User = {
+      id: 2,
+      name: "",
+      username: "",
+      imageUrl: "",
+      email: "",
+      password: ""
+    }
+
+    const[currentUser, setCurrent] = useState<User>();
+
     return (
       <div className="flex justify-center items-center min-h-screen bg-gray-100 py-3">
       <Card className={`${styles.input} w-full max-w-lg p-3 bg-white shadow-md rounded-md`}>
        <h1 className="text-4xl font-bold mb-6 text-center">Signup</h1>
-        <form>
+        <form onSubmit={onSubmit}>
          <label htmlFor="name">Name</label>
           <input className="p-2 border border-gray-300 rounded-md text-base focus:outline-none focus:border-blue-500"
             id="name"
             type="text"
             placeholder="Enter your name"
+            value={user.name}
           />
           <label htmlFor="username">Username</label>
           <input className="p-2 border border-gray-300 rounded-md text-base focus:outline-none focus:border-blue-500"
