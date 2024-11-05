@@ -16,7 +16,7 @@ export default function Users(props: UserProps) {
     return (
         <div>
             {props.users.map((current, i) =>{
-                return <User user={current} key={i}/>;
+                return<User user={current} key={i}/>;
             })}
         </div>
     );

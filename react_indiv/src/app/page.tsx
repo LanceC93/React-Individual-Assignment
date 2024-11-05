@@ -24,22 +24,20 @@ const USERS_INIT: User[] = [
 ];
 
 export default function Home() {
-  const[user, updateUsers] = useState<User[]>(USERS_INIT);
+  const[users, setUsers] = useState<User[]>(USERS_INIT);
   let i  = 2;
 
-  const addUser: FormEventHandler<HTMLInputElement> = (event) => {
-    event.preventDefault();
-    console.log(event.currentUser);
-    //updateUsers();
+  const addUser = (newUser:User) => {
+    setUsers((users) => [...users, newUser]);
   }
 
   return (
     <div>
       <div className="flex flex-col items-center justify-center p-2 bg-gray-100">
         <h1 className="text-4xl font-bold mb-6">Welcome to the Home Page</h1>
-        <Users users={user}/>
+        <Users users={users}/>
       </div>
-      <Signup onSubmit={addUser}/>
+      <Signup addUser={addUser}/>
     </div>
   );
 }
