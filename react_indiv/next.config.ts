@@ -1,4 +1,4 @@
-import type { NextConfig } from "next";
+/*import type { NextConfig } from "next";
 
 const nextConfig = {
   images: {
@@ -8,6 +8,17 @@ const nextConfig = {
          }
       ],
    },
-};
+};*/
 
-export default nextConfig;
+module.exports = {
+   images: {
+      remotePatterns: [
+          {
+            hostname: '**',
+          }
+       ],
+    },
+   reactStrictMode: false,
+ }
+
+//export default nextConfig;
